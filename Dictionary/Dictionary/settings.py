@@ -26,7 +26,7 @@ SECRET_KEY = '1sui&rnhpe%@nd3(&hj=!xfeg1cy!*61111s8oa79rg3j+6ltq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','']
+ALLOWED_HOSTS = ['127.0.0.1','wordsworld.herokuapp.com']
 
 #Authentication backends
 AUTHENTICATION_BACKENDS = (
