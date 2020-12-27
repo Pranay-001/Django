@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block title%}Login | WordWorld{%endblock%}
+{% block body %}
+
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.level == 40 %}
+            <div class="m-0 alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>{{message}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {%endif%}
+            {% if message.level == 25 %}
+            <div class="m-0 alert alert-success alert-dismissible fade show" role="alert">
+              <strong>{{message}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {%endif%}
+        {% endfor %}
+        <div class="hidden" style="height:0; visibility:hidden;">
+                    {{messages}}=[]
+        </div>
+    {% endif %}
+    <div class="p-0 m-0 t-0 fluid w-100" style="height:100vh; background-image:url('https://source.unsplash.com/1600x900/?characters,letters,alphabets,words,dark,typewritter,keyboard');">
+        <div class="p-0 t-0" style="position:absolute; width:50vw; top:20vh; left:25vw;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" style="background-color:teal;">
+                    <h5 class="modal-title">Login</h5>
+                  </div>
+                  <form action="userverification" method="POST">
+                      {%csrf_token%}
+                      <div class="modal-body">
+                          <label for="uname1" class="form-label">UserName</label>
+                          <input type="text" class="form-control" id="uname1" name="uname1" placeholder="Enter Username" required/>
+                          <label for="password1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter Password" required/>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Log In</button>
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Sign Up
+                          </button>
+                      </div>
+                  </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header" style="background-color:teal;">
+                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form class="modal-body" method="post" action="validate">
+                {%csrf_token%}
+                <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="name" class="form-label">Name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="uname" class="form-label">User Name</label>
+                      <input type="text" class="form-control" id="uname" name="uname" placeholder="Enter your username" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="email" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="phone" class="form-label">Phone Number</label>
+                      <input type="tel" class="form-control" id="phone" name="phone" placeholder="" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="password" name="password" placeholder="" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="cpassword" class="form-label">Confirm Password</label>
+                      <input type="password" class="form-control" id="cpassword" name="cpassword" placeholder="" required>
+                    </div>
+                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+{%endblock %}
